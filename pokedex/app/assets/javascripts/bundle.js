@@ -22510,7 +22510,7 @@ var _ = _interopRequireWildcard(_lodash);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var selectAllPokemon = exports.selectAllPokemon = function selectAllPokemon(state) {
-  return _.values(state);
+  return _.values(state.entities.pokemon);
 };
 
 /***/ }),
@@ -41536,7 +41536,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 var PokemonIndex = exports.PokemonIndex = function PokemonIndex(props) {
-
   return _react2.default.createElement(
     'div',
     null,
@@ -41544,7 +41543,14 @@ var PokemonIndex = exports.PokemonIndex = function PokemonIndex(props) {
       'ul',
       null,
       props.pokemon.map(function (pokemon) {
-        return _react2.default.createElement(_pokemon_index_item.PokemonIndexItem, { key: pokemon.id, pokemon: pokemon });
+        return (
+          // <PokemonIndexItem key={pokemon.id} pokemon={pokemon}/>
+          _react2.default.createElement(
+            'li',
+            null,
+            pokemon.name
+          )
+        );
       })
     )
   );
